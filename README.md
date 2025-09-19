@@ -1,6 +1,6 @@
 # Luminance
 
-A project dedicated to reverse engineering the Zelotes F-35C gaming mouse to enable custom control over its onboard OLED screen and other features.
+A project dedicated to reverse engineering the Zelotes F-35C mouse to enable custom control over its onboard OLED screen and other features.
 
 > The primary goal is to understand the communication protocol between the official software and the mouse, with the aim of creating custom animations or useful displays for the OLED screen.
 
@@ -10,21 +10,21 @@ A project dedicated to reverse engineering the Zelotes F-35C gaming mouse to ena
 
 * **Device:** Zelotes F-35C Gaming Mouse
 * **Features:** RGB lighting, onboard OLED screen, multiple DPI profiles.
-* **Software:** `zelotes F-35C mouse.exe`
+* **Software:** `Zelotes F-35C Mouse`
 
 ---
 
 ## Current Progress & Findings
 
-Our investigation has proceeded in two main phases: passive USB traffic analysis and attempted software decompilation.
+My investigation has proceeded in two main phases: passive USB traffic analysis and attempted software decompilation.
 
 ### 1. USB Packet Analysis (Wireshark)
 
-Using **Wireshark** with **USBPcap**, we successfully captured the USB HID packets sent from the host software to the mouse when changing settings.
+Using **Wireshark** with **USBPcap**, I successfully captured the USB HID packets sent from the host software to the mouse when changing settings.
 
 #### Key Findings:
 
-* **Set DPI Command:** We have successfully identified the command to change the mouse's DPI.
+* **Set DPI Command:** I have successfully identified the command to change the mouse's DPI.
     * **Direction:** `OUT` (Host -> Device)
     * **Report ID:** `0x04`
     * **Command Structure:** `04 20 00 [DPI_Low] [DPI_High] ...`
@@ -39,7 +39,7 @@ Using **Wireshark** with **USBPcap**, we successfully captured the USB HID packe
         +-------------- Report ID
         ```
 
-* **Set RGB Lighting Command:** We captured a more complex packet, initially believed to be for the OLED screen. We've since concluded this is for the RGB lighting effects.
+* **Set RGB Lighting Command:** I captured a more complex packet, initially believed to be for the OLED screen. I've since concluded this is for the RGB lighting effects.
     * **Command Code:** `0x61`
     * **Structure:** `04 61 ... [Length] ... [DATA]`
     * **Note:** The long data payload likely defines complex lighting effects like colors, speed, and patterns.
@@ -50,7 +50,7 @@ Using **Wireshark** with **USBPcap**, we successfully captured the USB HID packe
 
 ### 2. Software Analysis
 
-We attempted to decompile the official software to read the source code directly.
+I attempted to decompile the official software to read the source code directly.
 
 * **Attempt 1 (.NET Decompilation):**
     * **Tools:** ILSpy
@@ -60,7 +60,7 @@ We attempted to decompile the official software to read the source code directly
 
 * **Attempt 2 (Native Decompilation):**
     * **Tool:** Ghidra
-    * **Status:** In progress. This is the correct tool for the job.
+    * **Status:** In progress, this is probably the correct tool for the job.
 
 ---
 

@@ -10,7 +10,7 @@ A project dedicated to reverse engineering the Zelotes F-35C mouse to enable cus
 
 * **Device:** Zelotes F-35C Gaming Mouse
 * **Features:** RGB lighting, onboard OLED screen, multiple DPI profiles.
-* **Software:** `Zelotes F-35C Mouse`
+* **Software:** `Zelotes F-35C Mouse.exe`
 
 ---
 
@@ -74,7 +74,7 @@ I attempted to decompile the official software to read the source code directly.
 
 1.  **Fix Ghidra Environment:** Troubleshoot the Java installation to get Ghidra running correctly.
 2.  **Analyze Executable in Ghidra:**
-    * Import `zelotes F-35C mouse.exe` and its related DLLs into a Ghidra project.
+    * Import `Zelotes F-35C Mouse.exe` and its related DLLs into a Ghidra project.
     * Run the auto-analysis.
     * Search for defined **strings** (e.g., "DPI", "OLED", "HID").
     * Search for **imports** from system libraries related to USB communication (e.g., `hid.dll`).
